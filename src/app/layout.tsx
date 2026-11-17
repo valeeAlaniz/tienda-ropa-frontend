@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Anton, Caveat, Geist, Geist_Mono } from "next/font/google";
 
 import Footer from "@/components/Footer";
-import ThemeToggle from "@/components/layout/ThemeToggle";
+import Navbar from "@/components/layout/Navbar";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 import "./globals.css";
@@ -51,18 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          {/* TEMPORAL*/}
-          <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-            <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-              <Link href="/" className="flex items-baseline gap-1.5">
-                <span className="font-display text-2xl uppercase tracking-tight">
-                  Tienda
-                </span>
-                <span className="font-script text-2xl text-muted">de ropa</span>
-              </Link>
-              <ThemeToggle />
-            </div>
-          </header>
+          <Navbar />
           <div className="flex-1">{children}</div>
           <Footer />
         </ThemeProvider>

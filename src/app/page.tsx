@@ -172,7 +172,7 @@ export default async function Home() {
       </section>
 
       {/* ALQUILER */}
-      <section className="mx-auto max-w-6xl px-6 pb-20">
+      <section id="alquiler" className="mx-auto max-w-6xl scroll-mt-32 px-6 pb-20">
         <div className="grid gap-10 bg-accent p-8 text-accent-foreground md:grid-cols-[1fr_1.2fr] md:p-12">
           <div>
             <p className="font-script text-3xl opacity-70">Para tu gran noche</p>
