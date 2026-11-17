@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { Anton, Caveat, Geist, Geist_Mono } from "next/font/google";
 
 import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 import "./globals.css";
@@ -17,10 +18,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+});
+
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -38,19 +44,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="es"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${caveat.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          {/* TEMPORAL */}
+          {/* TEMPORAL*/}
           <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-            <div className="mx-auto flex h-16 max-w-6xl items-center px-4">
-              <Link href="/" className="font-display text-2xl font-semibold tracking-tight">
-                Tienda de ropa
+            <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+              <Link href="/" className="flex items-baseline gap-1.5">
+                <span className="font-display text-2xl uppercase tracking-tight">
+                  Tienda
+                </span>
+                <span className="font-script text-2xl text-muted">de ropa</span>
               </Link>
+              <ThemeToggle />
             </div>
           </header>
           <div className="flex-1">{children}</div>

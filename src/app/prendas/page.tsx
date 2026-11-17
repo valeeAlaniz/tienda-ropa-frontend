@@ -58,7 +58,7 @@ export default async function PrendasPage({
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-12">
-      <h1 className="font-display text-5xl font-medium">Prendas</h1>
+      <h1 className="font-display text-5xl uppercase tracking-tight">Prendas</h1>
       <p className="mt-2 text-sm text-muted">Ropa para comprar.</p>
 
       <div className="mt-8">

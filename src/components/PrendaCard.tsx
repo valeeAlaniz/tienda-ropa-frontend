@@ -42,7 +42,7 @@ export default function PrendaCard({ prenda }: { prenda: Prenda }) {
             {prenda.categoria.nombre}
           </p>
         )}
-        <h3 className="mt-1 font-display text-xl font-medium">{prenda.nombre}</h3>
+        <h3 className="mt-1 font-display text-xl uppercase tracking-tight">{prenda.nombre}</h3>
         <p className="text-sm text-muted">
           Talle {prenda.talle === "UNICO" ? "único" : prenda.talle} · {prenda.color}
         </p>

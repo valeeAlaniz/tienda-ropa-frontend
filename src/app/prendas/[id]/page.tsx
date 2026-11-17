@@ -29,7 +29,7 @@ async function Contenido({ id }: { id: string }) {
             {categoria.nombre}
           </p>
         )}
-        <h1 className="mt-1 font-display text-5xl font-medium">{prenda.nombre}</h1>
+        <h1 className="mt-1 font-display text-5xl uppercase tracking-tight">{prenda.nombre}</h1>
         <p className="mt-3 text-2xl">{formatearPrecio(prenda.precio)}</p>
         <p className="mt-6 opacity-80">{prenda.descripcion}</p>
 
