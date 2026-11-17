@@ -11,9 +11,11 @@ const campo =
 export default function PrendaFilters({
   categorias,
   placeholder = "Buscar prendas...",
+  campoPrecio = "precio",
 }: {
   categorias: Categoria[];
   placeholder?: string;
+  campoPrecio?: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -88,8 +90,8 @@ export default function PrendaFilters({
         className={campo}
       >
         <option value="">Orden por defecto</option>
-        <option value="precio">Menor precio</option>
-        <option value="-precio">Mayor precio</option>
+        <option value={campoPrecio}>Menor precio</option>
+        <option value={`-${campoPrecio}`}>Mayor precio</option>
         <option value="nombre">Nombre A-Z</option>
       </select>
 

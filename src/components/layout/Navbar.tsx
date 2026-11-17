@@ -20,7 +20,7 @@ export default async function Navbar() {
           className="col-span-2 row-start-2 flex flex-wrap items-center gap-x-2 gap-y-1 md:gap-x-4"
         >
           <Link href="/prendas" className={enlace}>Comprar</Link>
-          <Link href="/#alquiler" className={enlace}>Alquiler</Link>
+          <Link href="/alquiler" className={enlace}>Alquiler</Link>
           <Link href={conSesion ? "/mis-turnos" : "/turnos/reservar"} className={enlace}>
             {conSesion ? "Mis turnos" : "Reservar turno"}
           </Link>
