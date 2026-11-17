@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import { getToken } from "@/lib/auth";
+import CartLink from "@/components/carrito/CartLink";
 
 const enlace = "rounded-sm px-2 py-1 text-sm text-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent";
 
@@ -25,7 +26,10 @@ export default async function Navbar() {
           </Link>
           <Link href="/login" className={enlace}>{conSesion ? "Mi cuenta" : "Ingresar"}</Link>
         </nav>
-        <ThemeToggle className="col-start-2 row-start-1 justify-self-end" />
+        <div className="col-start-2 row-start-1 flex items-center gap-2 justify-self-end">
+            <CartLink />
+            <ThemeToggle />
+        </div>
       </div>
     </header>
   );

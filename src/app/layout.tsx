@@ -1,9 +1,12 @@
+
 import type { Metadata } from "next";
 import { Anton, Caveat, Geist, Geist_Mono } from "next/font/google";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/layout/Navbar";
+import { CartProvider } from "@/context/cart/CartContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { ToastProvider } from "@/context/ToastContext";
 
 import "./globals.css";
 
@@ -50,9 +53,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          <Navbar />
-          <div className="flex-1">{children}</div>
-          <Footer />
+          <ToastProvider>
+            <CartProvider>
+              <Navbar />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </CartProvider>
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>
