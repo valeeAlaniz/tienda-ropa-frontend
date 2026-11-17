@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import Cargando from "@/components/Cargando";
+import DashboardTabs from "@/components/DashboardTabs";
 import PrendaTable from "@/components/PrendaTable";
 import { getPrendas } from "@/lib/api";
 
@@ -13,6 +14,7 @@ async function Contenido() {
 export default function DashboardPrendasPage() {
   return (
     <main className="mx-auto max-w-6xl px-6 py-12">
+      <DashboardTabs actual="prendas" />
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <h1 className="font-display text-4xl uppercase tracking-tight">Prendas</h1>
         <Link
