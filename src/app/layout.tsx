@@ -1,10 +1,9 @@
+
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Anton, Caveat, Geist, Geist_Mono } from "next/font/google";
 
-import CartLink from "@/components/carrito/CartLink";
 import Footer from "@/components/Footer";
-import ThemeToggle from "@/components/layout/ThemeToggle";
+import Navbar from "@/components/layout/Navbar";
 import { CartProvider } from "@/context/cart/CartContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { ToastProvider } from "@/context/ToastContext";
@@ -55,25 +54,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <ToastProvider>
-          <CartProvider>
-          {/* TEMPORAL*/}
-          <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-            <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-              <Link href="/" className="flex items-baseline gap-1.5">
-                <span className="font-display text-2xl uppercase tracking-tight">
-                  Tienda
-                </span>
-                <span className="font-script text-2xl text-muted">de ropa</span>
-              </Link>
-              <div className="flex items-center gap-2">
-                <CartLink />
-                <ThemeToggle />
-              </div>
-            </div>
-          </header>
-          <div className="flex-1">{children}</div>
-          <Footer />
-          </CartProvider>
+            <CartProvider>
+              <Navbar />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </CartProvider>
           </ToastProvider>
         </ThemeProvider>
       </body>
