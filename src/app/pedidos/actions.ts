@@ -66,15 +66,34 @@ export async function crearPedido(
     };
   }
 
-  const respuesta = await fetch(`${API_URL}/api/ventas/pedidos/crear_completo/`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: `Token ${token}` },
-    body: JSON.stringify(cuerpo),
-    cache: "no-store",
-  }).catch(() => null);
+  let respuesta: Response;
 
-  if (!respuesta) return { ok: false, error: SIN_CONEXION };
-  // El back usa SessionAuthentication primero: una sesión inválida responde 403 y no 401.
+  try {
+    respuesta = await fetch(`${API_URL}/api/ventas/pedidos/crear_completo/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify(cuerpo),
+      cache: "no-store",
+      signal: AbortSignal.timeout(15000),
+    });
+  } catch (error) {
+    if (
+      error instanceof Error &&
+      (error.name === "TimeoutError" || error.name === "AbortError")
+    ) {
+      return {
+        ok: false,
+        error:
+          "La solicitud tardó demasiado. El pedido podría haberse registrado. Revisá Mis pedidos antes de volver a comprar.",
+      };
+    }
+
+    return { ok: false, error: SIN_CONEXION };
+  }
+
   if (respuesta.status === 401 || respuesta.status === 403) {
     return { ok: false, error: SESION_VENCIDA };
   }
