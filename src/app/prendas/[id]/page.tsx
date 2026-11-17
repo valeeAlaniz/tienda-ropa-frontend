@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AddToCartButton from "@/components/carrito/AddToCartButton";
 import PrendaImage from "@/components/PrendaImage";
 import { formatearPrecio } from "@/components/PrendaCard";
 import { getCategorias, getPrenda } from "@/lib/api";
@@ -46,7 +47,7 @@ async function Contenido({ id }: { id: string }) {
             : "Sin stock por el momento"}
         </p>
 
-        {/* Marcos A agrega acá el botón "Agregar al carrito" (AddToCartButton) */}
+        <AddToCartButton prenda={prenda} />
       </div>
     </div>
   );
